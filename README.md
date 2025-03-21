@@ -316,58 +316,114 @@ skills:
 
 ```
 src/
-├── main/
-    ├── java/
-    │   └── cn/i7mc/fateservants/
-    │       ├── FateServants.java
-    │       ├── ai/
-    │       │   ├── ServantAIController.java
-    │       │   └── ServantBehavior.java
-    │       ├── attributes/
-    │       │   ├── AttributeContainer.java
-    │       │   ├── AttributeManager.java
-    │       │   ├── AttributeModifier.java
-    │       │   ├── ServantQuality.java
-    │       │   └── provider/
-    │       │       ├── AttributePlusProvider.java
-    │       │       └── AttributeProvider.java
-    │       ├── commands/
-    │       │   ├── FSCommand.java
-    │       │   └── FSTabCompleter.java
-    │       ├── config/
-    │       │   ├── ClassesConfig.java
-    │       │   └── StatsConfig.java
-    │       ├── database/
-    │       │   ├── DatabaseManager.java
-    │       │   └── LocalStorageManager.java
-    │       ├── gui/
-    │       │   ├── ServantGUI.java
-    │       │   └── ServantGUIListener.java
-    │       ├── listeners/
-    │       │   ├── MonsterTargetListener.java
-    │       │   └── PlayerJoinListener.java
-    │       ├── manager/
-    │       │   ├── ServantAIManager.java
-    │       │   ├── ServantClassManager.java
-    │       │   ├── ServantManager.java
-    │       │   └── SkinManager.java
-    │       ├── model/
-    │       │   ├── Servant.java
-    │       │   └── ServantClass.java
-    │       ├── packets/
-    │       │   └── PacketHandler.java
-    │       └── skills/
-    │           ├── Skill.java
-    │           ├── SkillInfo.java
-    │           └── SkillManager.java
-    └── resources/
-        ├── classes.yml
-        ├── config.yml
-        ├── gui.yml
-        ├── message.yml
-        ├── plugin.yml
-        ├── save.yml
-        └── stats.yml
+\---main
+    +---java
+    |   \---cn
+    |       \---i7mc
+    |           \---fateservants
+    |               |   FateServants.java                      # 插件主类，程序入口
+    |               |
+    |               +---ai
+    |               |       ServantAIController.java           # 英灵AI控制器，管理智能行为
+    |               |       ServantBehavior.java               # 英灵行为模式定义（跟随、战斗、防御）
+    |               |
+    |               +---attributes
+    |               |   |   AttributeContainer.java            # 属性容器，存储和管理英灵属性
+    |               |   |   AttributeInfo.java                 # 属性信息类，定义属性基本信息
+    |               |   |   AttributeManager.java              # 属性管理器，加载和管理所有属性
+    |               |   |   AttributeModifier.java             # 属性修饰符，用于修改属性值
+    |               |   |   ServantQuality.java                # 英灵品质类，定义品质对属性影响
+    |               |   |
+    |               |   \---provider
+    |               |           AttributePlusProvider.java     # AttributePlus插件的属性适配器
+    |               |           AttributeProvider.java         # 属性提供者接口
+    |               |
+    |               +---commands
+    |               |       FSCommand.java                     # 主命令处理类，处理/fs命令
+    |               |       FSTabCompleter.java                # 命令Tab补全实现
+    |               |
+    |               +---config
+    |               |       ClassesConfig.java                 # 职阶配置管理类
+    |               |       ConfigManager.java                 # 配置文件统一管理器
+    |               |       StatsConfig.java                   # 属性统计配置管理类
+    |               |
+    |               +---database
+    |               |       DatabaseManager.java               # 数据库管理器，处理SQL存储和查询
+    |               |       LocalStorageManager.java           # 本地存储管理器，提供YAML备份
+    |               |
+    |               +---gui
+    |               |   |   GUIConfigManager.java              # GUI配置管理器
+    |               |   |   GUIManager.java                    # GUI统一管理器
+    |               |   |   ServantGUI.java                    # 英灵GUI系统主类
+    |               |   |   ServantGUIListener.java            # GUI交互事件监听器
+    |               |   |
+    |               |   +---components
+    |               |   |       AbstractGUIComponent.java      # GUI组件抽象基类
+    |               |   |       AbstractGUIPage.java           # GUI页面抽象基类
+    |               |   |       ButtonComponent.java           # 按钮组件实现
+    |               |   |       GUIComponent.java              # GUI组件接口
+    |               |   |       GUIPage.java                   # GUI页面接口
+    |               |   |       LabelComponent.java            # 标签组件实现
+    |               |   |       PaginationComponent.java       # 分页组件实现
+    |               |   |
+    |               |   \---pages
+    |               |           MainMenuPage.java              # 主菜单页面实现
+    |               |           ServantControlPage.java        # 英灵控制页面实现
+    |               |           ServantListPage.java           # 英灵列表页面实现
+    |               |           ServantStatsPage.java          # 英灵属性页面实现
+    |               |
+    |               +---listeners
+    |               |       MonsterTargetListener.java         # 怪物目标事件监听器
+    |               |       PlayerJoinListener.java            # 玩家加入退出事件监听器
+    |               |
+    |               +---manager
+    |               |       ServantAIManager.java              # 英灵AI管理器
+    |               |       ServantClassManager.java           # 英灵职阶管理器
+    |               |       ServantManager.java                # 英灵实例统一管理器
+    |               |       SkinManager.java                   # 英灵皮肤和外观管理器
+    |               |
+    |               +---model
+    |               |   |   Servant.java                       # 英灵核心类，包含所有英灵数据和方法
+    |               |   |   ServantClass.java                  # 英灵职阶类，定义职阶特性
+    |               |   |   ServantState.java                  # 英灵状态类，定义各种状态
+    |               |   |
+    |               |   \---handlers
+    |               |           ServantAIHandler.java          # 英灵AI功能处理器
+    |               |           ServantAttributeHandler.java   # 英灵属性功能处理器
+    |               |           ServantCombatHandler.java      # 英灵战斗功能处理器
+    |               |           ServantHologramHandler.java    # 英灵全息显示处理器
+    |               |           ServantMovementHandler.java    # 英灵移动功能处理器
+    |               |
+    |               +---packets
+    |               |       PacketHandler.java                 # 网络数据包处理器，实现虚拟实体
+    |               |
+    |               +---skills
+    |               |       Skill.java                         # 技能类，定义技能基本属性和方法
+    |               |       SkillInfo.java                     # 技能信息类，存储技能配置信息
+    |               |       SkillManager.java                  # 技能管理器，加载和管理所有技能
+    |               |
+    |               \---utils
+    |                       AsyncTaskManager.java              # 异步任务管理器，处理异步操作
+    |                       DebugUtils.java                    # 调试工具类，统一处理调试信息
+    |                       FormatUtils.java                   # 格式化工具类，处理文本格式化
+    |                       LRUCache.java                      # LRU缓存实现，用于优化性能
+    |                       MaterialAdapter.java               # 材质适配器，处理版本兼容性
+    |                       MessageManager.java                # 消息管理器，统一管理插件消息
+    |                       ObjectPool.java                    # 对象池实现，减少对象创建和GC压力
+    |                       OptimizationUtils.java             # 优化工具类，提供性能优化方法
+    |                       PacketUtils.java                   # 数据包工具类，简化数据包操作
+    |                       ServantGenerator.java              # 英灵生成器，随机生成英灵
+    |
+    \---resources
+            classes.yml                                        # 职阶配置文件，定义各职阶属性和技能
+            config.yml                                         # 主要配置文件，包含基础设置
+            debugmessage.yml                                   # 调试消息配置文件，管理调试信息
+            gui.yml                                            # GUI界面配置文件
+            message.yml                                        # 消息显示配置文件
+            plugin.yml                                         # 插件信息、命令和权限定义
+            README-SQLite.md                                   # SQLite存储实现说明文档
+            save.yml                                           # 数据保存配置文件
+            stats.yml                                          # 属性统计配置文件
 ```
 
 ### 功能模块说明
@@ -378,70 +434,139 @@ src/
 #### 2. 功能模块
 
 ##### AI系统 (`ai/`)
-- 实现英灵的智能行为控制
-- 包含跟随、战斗、防御等行为模式
-- 负责目标选择和决策逻辑
+- `ServantAIController.java` - 英灵AI控制器，管理英灵的智能行为
+- `ServantBehavior.java` - 定义英灵的行为模式（跟随、战斗、防御等）
 
 ##### 属性系统 (`attributes/`)
-- 负责处理角色和物品的属性相关功能
-- 包含属性定义、计算和管理
+- `AttributeContainer.java` - 属性容器，存储和管理英灵的所有属性
+- `AttributeInfo.java` - 属性信息，定义属性的基本信息（名称、符号等）
+- `AttributeManager.java` - 属性管理器，负责加载和管理所有属性
+- `AttributeModifier.java` - 属性修饰符，用于修改属性值
+- `ServantQuality.java` - 英灵品质类，定义品质对属性的影响
+- **provider/** - 属性提供者包
+  - `AttributePlusProvider.java` - AttributePlus插件的属性适配器
+  - `AttributeProvider.java` - 属性提供者接口
 
 ##### 命令系统 (`commands/`)
-- 实现游戏内的命令处理功能
-- 包含各类游戏指令的具体实现
+- `FSCommand.java` - 处理插件的主要命令（如召唤、解除英灵等）
+- `FSTabCompleter.java` - 提供命令的Tab补全功能
 
 ##### 配置系统 (`config/`)
-- 处理项目的配置文件
-- 管理各种游戏参数和设置
+- `ClassesConfig.java` - 管理职阶配置（classes.yml）
+- `ConfigManager.java` - 统一管理所有配置文件
+- `StatsConfig.java` - 管理属性统计配置（stats.yml）
 
 ##### 数据库模块 (`database/`)
-- 负责数据的持久化存储
-- 管理数据库连接和操作
-- 支持MySQL数据存储
+- `DatabaseManager.java` - 数据库管理器，处理SQL存储和查询
+- `LocalStorageManager.java` - 本地存储管理器，提供基于YAML的备份存储
 
 ##### 图形界面 (`gui/`)
-- 实现游戏的用户界面
-- 包含各种UI组件和交互功能
+- `ServantGUI.java` - 英灵GUI系统的主类
+- `ServantGUIListener.java` - 处理GUI交互事件
+- `GUIConfigManager.java` - 管理GUI配置
+- `GUIManager.java` - 管理所有GUI页面和组件
+- **components/** - GUI组件包
+  - `AbstractGUIComponent.java` - GUI组件抽象基类
+  - `AbstractGUIPage.java` - GUI页面抽象基类
+  - `ButtonComponent.java` - 按钮组件
+  - `GUIComponent.java` - GUI组件接口
+  - `GUIPage.java` - GUI页面接口
+  - `LabelComponent.java` - 标签组件
+  - `PaginationComponent.java` - 分页组件
+- **pages/** - GUI页面包
+  - `MainMenuPage.java` - 主菜单页面
+  - `ServantControlPage.java` - 英灵控制页面
+  - `ServantListPage.java` - 英灵列表页面
+  - `ServantStatsPage.java` - 英灵属性页面
 
 ##### 监听器 (`listeners/`)
-- 实现事件监听和处理
-- 处理玩家加入、怪物目标等事件
+- `MonsterTargetListener.java` - 处理怪物目标相关事件
+- `PlayerJoinListener.java` - 处理玩家加入和退出事件
 
 ##### 管理器 (`manager/`)
-- 提供各种游戏系统的管理功能
-- 统一管理游戏资源和状态
+- `ServantAIManager.java` - 管理所有英灵的AI系统
+- `ServantClassManager.java` - 管理职阶系统
+- `ServantManager.java` - 管理所有召唤的英灵
+- `SkinManager.java` - 管理英灵的皮肤和外观
 
 ##### 数据模型 (`model/`)
-- 定义游戏中的各种数据结构
-- 包含实体类和数据对象
+- `Servant.java` - 英灵的核心类，包含所有英灵的数据和方法
+- `ServantClass.java` - 英灵职阶类，定义职阶的特性
+- `ServantState.java` - 英灵状态类，定义英灵的各种状态
+- **handlers/** - 英灵功能处理器包
+  - `ServantAIHandler.java` - 处理英灵的AI相关功能
+  - `ServantAttributeHandler.java` - 处理英灵的属性相关功能
+  - `ServantCombatHandler.java` - 处理英灵的战斗相关功能
+  - `ServantHologramHandler.java` - 处理英灵的全息显示
+  - `ServantMovementHandler.java` - 处理英灵的移动相关功能
 
 ##### 网络通信 (`packets/`)
-- 处理网络通信相关功能
-- 实现数据包的收发和处理
-- 通过ProtocolLib实现虚拟实体
+- `PacketHandler.java` - 处理网络数据包，实现虚拟实体
 
 ##### 技能系统 (`skills/`)
-- 实现游戏中的技能系统
-- 包含技能定义和效果处理
+- `Skill.java` - 技能类，定义技能的基本属性和方法
+- `SkillInfo.java` - 技能信息类，存储技能的配置信息
+- `SkillManager.java` - 技能管理器，负责加载和管理所有技能
+
+##### 工具类 (`utils/`)
+- `AsyncTaskManager.java` - 异步任务管理器，处理异步操作
+- `DebugUtils.java` - 调试工具类，统一处理调试信息
+- `FormatUtils.java` - 格式化工具类，处理文本格式化
+- `LRUCache.java` - LRU缓存实现，用于优化性能
+- `MaterialAdapter.java` - 材质适配器，处理不同版本的材质兼容
+- `MessageManager.java` - 消息管理器，统一管理插件消息
+- `ObjectPool.java` - 对象池实现，减少对象创建和GC压力
+- `OptimizationUtils.java` - 优化工具类，提供各种性能优化方法
+- `PacketUtils.java` - 数据包工具类，简化数据包操作
+- `ServantGenerator.java` - 英灵生成器，负责随机生成英灵
 
 ### 配置文件 (`src/main/resources/`)
 - `plugin.yml` - 插件基本信息、命令和权限定义
 - `config.yml` - 主要配置文件，包含数据库、英灵基础设置等
 - `message.yml` - 消息显示配置文件
+- `debugmessage.yml` - 调试消息配置文件，统一管理所有调试信息
 - `classes.yml` - 职阶配置文件，定义各职阶属性和技能
 - `gui.yml` - GUI界面配置文件
 - `stats.yml` - 属性统计配置文件
 - `save.yml` - 数据保存配置文件
+- `README-SQLite.md` - SQLite存储实现说明文档
 
 ### 技术栈
 - 编程语言：Java
-- 插件平台：Bukkit/Spigot
+- 插件平台：Bukkit/Spigot 1.12+
 - 项目管理工具：Maven
 - 配置格式：YAML
-- 网络通信：ProtocolLib
-- 属性系统：AttributePlus(可选)
+- 网络通信：ProtocolLib（用于虚拟实体和数据包处理）
+- 属性系统：支持AttributePlus集成
+- 数据存储：SQLite（内置）和本地YAML存储
+- 性能优化：对象池、LRU缓存、异步任务管理
+- 调试系统：统一的调试信息管理和输出控制
 
-## 开发环境
-- IDE支持：VS Code（.vscode/）
-- 构建输出：target/
-- Minecraft版本：1.12+
+### 插件依赖
+- **必需依赖**:
+  - ProtocolLib - 用于数据包操作和虚拟实体创建
+- **软依赖**:
+  - AttributePlus - 属性系统支持
+  - ItemLoreOrigin - 物品描述支持
+  - LibsDisguises - 用于实体伪装
+  - MythicMobs - 技能系统支持
+  - PlaceholderAPI - 变量占位符支持
+  - Vault - 经济系统支持
+
+### 开发环境
+- JDK版本：Java 8+
+- 构建工具：Maven 3.6+
+- 目标平台：Minecraft 1.12.2+
+- 开发IDE：支持任何Java IDE（如IntelliJ IDEA、Eclipse、VS Code等）
+- 测试环境：Spigot 1.12.2
+
+### 构建项目
+使用Maven构建项目：
+```bash
+mvn clean package
+```
+构建后的JAR文件将位于`target`目录中。
+
+### 重要资源
+- SQLite存储实现说明：`src/main/resources/README-SQLite.md`
+- 项目重构与优化计划：`CHANGE.md`
