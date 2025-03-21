@@ -1,0 +1,31 @@
+name: FateServants
+version: '${project.version}'
+main: cn.i7mc.fateservants.FateServants
+api-version: '1.12'
+authors: [Saga]
+depend: [ProtocolLib]
+softdepend: [AttributePlus, ItemLoreOrigin, LibsDisguises, MythicMobs, PlaceholderAPI, Vault]
+description: A plugin for Fate series servants battle pets
+
+commands:
+  fs:
+    description: FateServants 主命令
+    usage: /<command> [summon|unsummon|list|reload]
+    aliases: [fateservants]
+
+permissions:
+  fateservants.summon:
+    description: 允许召唤英灵
+    default: op
+  fateservants.unsummon:
+    description: 允许解除英灵
+    default: op
+  fateservants.list:
+    description: 允许查看英灵列表
+    default: op
+  fateservants.reload:
+    description: 允许重载配置
+    default: op
+  fateservants.manage:
+    description: 允许打开英灵管理界面
+    default: op 

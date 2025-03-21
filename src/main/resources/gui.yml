@@ -1,0 +1,509 @@
+# GUI配置文件
+# 这个文件用于配置GUI界面的基本设置、布局和样式
+
+# 全局设置
+settings:
+  # 是否使用自定义GUI音效
+  use_sounds: true
+  # 默认页面大小（槽位数量，必须是9的倍数）
+  default_size: 54
+  # 动画效果默认启用
+  enable_animations: true
+  # 点击延迟（毫秒）
+  click_delay: 200
+
+# 音效设置
+sounds:
+  # 打开界面音效
+  open:
+    sound: BLOCK_CHEST_OPEN
+    volume: 0.5
+    pitch: 1.0
+  # 点击按钮音效
+  click:
+    sound: UI_BUTTON_CLICK
+    volume: 0.5
+    pitch: 1.0
+  # 关闭界面音效
+  close:
+    sound: BLOCK_CHEST_CLOSE
+    volume: 0.5
+    pitch: 1.0
+  # 错误提示音效
+  error:
+    sound: ENTITY_VILLAGER_NO
+    volume: 0.5
+    pitch: 1.0
+  # 成功操作音效
+  success:
+    sound: ENTITY_PLAYER_LEVELUP
+    volume: 0.5
+    pitch: 1.0
+
+# 填充物品设置（用于装饰GUI边框）
+decorations:
+  # 边框填充
+  border:
+    material: GRAY_STAINED_GLASS_PANE
+    name: "&7"
+  # 分隔线填充
+  separator:
+    material: BLACK_STAINED_GLASS_PANE
+    name: "&7"
+  # 未解锁填充
+  locked:
+    material: BARRIER
+    name: "&c未解锁"
+    lore:
+      - "&7需要达到特定条件才能解锁"
+
+# 常用按钮配置
+buttons:
+  # 返回按钮
+  back:
+    material: ARROW
+    name: "&c返回"
+    lore:
+      - "&7点击返回上一页"
+  # 下一页按钮
+  next:
+    material: ARROW
+    name: "&a下一页"
+    lore:
+      - "&7点击前往下一页"
+  # 上一页按钮
+  previous:
+    material: ARROW
+    name: "&a上一页"
+    lore:
+      - "&7点击返回上一页"
+  # 关闭按钮
+  close:
+    material: BARRIER
+    name: "&c关闭"
+    lore:
+      - "&7点击关闭界面"
+  # 刷新按钮
+  refresh:
+    material: CLOCK
+    name: "&a刷新"
+    lore:
+      - "&7点击刷新当前页面"
+
+# 职阶图标设置
+class_icons:
+  saber:
+    material: DIAMOND_SWORD
+    name: "&b剑士"
+    lore:
+      - "&7拥有强大的近战能力"
+  archer:
+    material: BOW
+    name: "&a弓兵"
+    lore:
+      - "&7擅长远程攻击"
+  lancer:
+    material: TRIDENT
+    name: "&9枪兵"
+    lore:
+      - "&7拥有出色的敏捷和穿刺攻击"
+  rider:
+    material: SADDLE
+    name: "&e骑兵"
+    lore:
+      - "&7机动性极强的战士"
+  caster:
+    material: ENCHANTED_BOOK
+    name: "&d法师"
+    lore:
+      - "&7掌握强大的魔法"
+  assassin:
+    material: IRON_SWORD
+    name: "&8刺客"
+    lore:
+      - "&7潜行与暗杀的大师"
+  berserker:
+    material: NETHERITE_AXE
+    name: "&4狂战士"
+    lore:
+      - "&7狂暴的战士，攻击力极高"
+
+# 显示格式定义
+format:
+  # 核心属性显示格式
+  health: "&7生命值: &a{current}/{max} &7(&a{percent}%&7)"
+  mana: "&7魔法值: &b{current}/{max} &7(&b{percent}%&7)"
+  experience: "&7等级: &e{level} &7经验: &e{current}/{required} &7(&e{percent}%&7)"
+  movement_speed: "&7移动速度: &f{value}"
+  attack_speed: "&7攻击速度: &f{attacks_per_second}次/秒"
+  
+  # 其他属性显示格式
+  class: "&7职阶: &f{name}"
+  quality: "&7品质: {display_name}"
+  attribute: "&7{display_name}: &f{value}{symbol} {growth_color}({growth}%)"
+  
+  # 技能显示格式
+  skill: "&e{name}\n&7{description}\n&b消耗: {mana_cost} &c冷却: {cooldown}秒 &7类型: {cast_type}"
+
+# 页面定义
+pages:
+  # 主页面
+  main:
+    title: "&8§l英灵管理"
+    size: 54
+    components:
+      # 信息显示区域
+      servant_icon:
+        type: "display"
+        slot: 4
+        material: "DIAMOND_SWORD"
+        display_name: "&b{servant_name}"
+        lore:
+          - "{class}"
+          - "{quality}"
+          - ""
+          - "{health}"
+          - "{mana}"
+          - "{experience}"
+          - ""
+          - "&7右键点击管理英灵"
+        handler:
+          update_type: "servant_info"
+      
+      # 导航按钮
+      stats_button:
+        type: "button"
+        slot: 19
+        material: "BOOK"
+        display_name: "&a英灵属性"
+        lore:
+          - "&7点击查看英灵详细属性"
+        action: "open_page"
+        handler:
+          page: "stats"
+      
+      skills_button:
+        type: "button"
+        slot: 21
+        material: "BLAZE_POWDER"
+        display_name: "&c英灵技能"
+        lore:
+          - "&7点击查看英灵技能"
+        action: "open_page"
+        handler:
+          page: "skills"
+      
+      control_button:
+        type: "button"
+        slot: 23
+        material: "COMPASS"
+        display_name: "&e英灵控制"
+        lore:
+          - "&7点击控制英灵行为"
+        action: "open_page"
+        handler:
+          page: "control"
+      
+      appearance_button:
+        type: "button"
+        slot: 25
+        material: "LEATHER_CHESTPLATE"
+        display_name: "&d英灵外观"
+        lore:
+          - "&7点击管理英灵外观"
+        action: "open_page"
+        handler:
+          page: "appearance"
+      
+      # 底部按钮
+      dismiss_button:
+        type: "button"
+        slot: 45
+        material: "BARRIER"
+        display_name: "&c解除英灵"
+        lore:
+          - "&7点击解除当前英灵"
+          - "&c警告: 此操作无法撤销"
+        action: "dismiss_servant"
+      
+      close_button:
+        type: "button"
+        slot: 49
+        material: "REDSTONE"
+        display_name: "&c关闭"
+        lore:
+          - "&7点击关闭界面"
+        action: "close"
+      
+      back_button:
+        type: "button"
+        slot: 48
+        material: "ARROW"
+        display_name: "&f返回"
+        lore:
+          - "&7点击返回上一页"
+        action: "back"
+      
+      help_button:
+        type: "button"
+        slot: 50
+        material: "PAPER"
+        display_name: "&b帮助"
+        lore:
+          - "&7点击查看帮助信息"
+        action: "show_help"
+  
+  # 属性页面
+  stats:
+    title: "&8§l英灵属性"
+    size: 54
+    # 核心属性列表
+    core_attributes:
+      - "health"
+      - "mana"
+      - "exp"
+      - "speed"
+      - "movement_speed"
+    components:
+      # 信息展示区域
+      info_display:
+        type: "display"
+        slot: 4
+        material: "BOOK"
+        display_name: "&b{servant_name} &7- 属性"
+        lore:
+          - "&7职阶: &f{servant_class}"
+          - "&7品质: {servant_quality}"
+          - "&7等级: &f{servant_level}"
+          - ""
+          - "&6核心属性:"
+          - "{health}"
+          - "{mana}"
+          - "{movement_speed}"
+      
+      # 属性容器 - 用于显示非核心属性
+      attributes_container:
+        slots:
+          - 19
+          - 20
+          - 21
+          - 22
+          - 23
+          - 24
+          - 25
+          - 28
+          - 29
+          - 30
+          - 31
+          - 32
+          - 33
+          - 34
+          - 37
+          - 38
+          - 39
+          - 40
+          - 41
+          - 42
+          - 43
+      
+      # 返回按钮
+      back_button:
+        type: "button"
+        slot: 49
+        material: "ARROW"
+        display_name: "&f返回主页"
+        lore:
+          - "&7点击返回主页面"
+        action: "open_page"
+        handler:
+          page: "main"
+  
+  # 技能页面
+  skills:
+    title: "&8§l英灵技能"
+    size: 54
+    components:
+      # 信息显示区域
+      info_display:
+        type: "display"
+        slot: 4
+        material: "BLAZE_POWDER"
+        display_name: "&b{servant_name} &7- 技能"
+        lore:
+          - "{class}"
+          - "{quality}"
+          - ""
+          - "{health}"
+          - "{mana}"
+          - "{experience}"
+        handler:
+          update_type: "servant_info"
+      
+      # 技能列表区域
+      skills_container:
+        type: "container"
+        slots: [19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34]
+        handler:
+          update_type: "servant_skills"
+      
+      # 底部导航
+      back_button:
+        type: "button"
+        slot: 49
+        material: "ARROW"
+        display_name: "&f返回"
+        lore:
+          - "&7点击返回主页面"
+        action: "open_page"
+        handler:
+          page: "main"
+  
+  # 控制页面
+  control:
+    title: "&8§l英灵控制"
+    size: 54
+    components:
+      # 信息显示区域
+      info_display:
+        type: "display"
+        slot: 4
+        material: "COMPASS"
+        display_name: "&b{servant_name} &7- 控制"
+        lore:
+          - "{class}"
+          - "{quality}"
+          - ""
+          - "{health}"
+          - "{mana}"
+          - "{experience}"
+          - ""
+          - "&7当前模式: &f{mode}"
+        handler:
+          update_type: "servant_info"
+      
+      # 模式按钮
+      follow_mode:
+        type: "button"
+        slot: 20
+        material: "LEAD"
+        display_name: "&a跟随模式"
+        lore:
+          - "&7英灵将跟随在你身边"
+          - "&7不会主动攻击敌人"
+          - ""
+          - "&7点击切换到此模式"
+        action: "change_mode"
+        handler:
+          mode: "FOLLOW"
+      
+      combat_mode:
+        type: "button"
+        slot: 22
+        material: "DIAMOND_SWORD"
+        display_name: "&c战斗模式"
+        lore:
+          - "&7英灵将主动搜索附近敌人"
+          - "&7并攻击它们"
+          - ""
+          - "&7点击切换到此模式"
+        action: "change_mode"
+        handler:
+          mode: "COMBAT"
+      
+      defend_mode:
+        type: "button"
+        slot: 24
+        material: "SHIELD"
+        display_name: "&e防御模式"
+        lore:
+          - "&7英灵将保护你"
+          - "&7当你受到攻击时反击敌人"
+          - ""
+          - "&7点击切换到此模式"
+        action: "change_mode"
+        handler:
+          mode: "DEFEND"
+      
+      # 其他控制
+      teleport_button:
+        type: "button"
+        slot: 31
+        material: "ENDER_PEARL"
+        display_name: "&b召回英灵"
+        lore:
+          - "&7将英灵传送到你身边"
+          - ""
+          - "&7点击传送英灵"
+        action: "teleport_servant"
+      
+      # 底部导航
+      back_button:
+        type: "button"
+        slot: 49
+        material: "ARROW"
+        display_name: "&f返回"
+        lore:
+          - "&7点击返回主页面"
+        action: "open_page"
+        handler:
+          page: "main"
+  
+  # 外观页面
+  appearance:
+    title: "&8§l英灵外观"
+    size: 54
+    components:
+      # 信息显示区域
+      info_display:
+        type: "display"
+        slot: 4
+        material: "LEATHER_CHESTPLATE"
+        display_name: "&b{servant_name} &7- 外观"
+        lore:
+          - "{class}"
+          - "{quality}"
+          - ""
+          - "&7当前皮肤: &f{skin}"
+        handler:
+          update_type: "servant_info"
+      
+      # 皮肤列表区域
+      skins_container:
+        type: "container"
+        slots: [19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34]
+        handler:
+          update_type: "servant_skins"
+      
+      # 底部导航
+      back_button:
+        type: "button"
+        slot: 49
+        material: "ARROW"
+        display_name: "&f返回"
+        lore:
+          - "&7点击返回主页面"
+        action: "open_page"
+        handler:
+          page: "main"
+
+# 格式化设置
+format:
+  # 属性标题格式
+  attribute_title: "&b{display_name}{symbol_part}"
+  
+  # 属性描述格式
+  attribute_lore:
+    - "&7{display_name}: &f{value}{symbol} {growth_color}({growth}%)"
+    - ""
+    - "&7基础值: &f{base_value}"
+    - "&7加成值: {bonus_color}{bonus_sign}{bonus_value}"
+  
+  # 成长资质颜色阈值
+  growth:
+    thresholds:
+      high: 0.8
+      medium: 0.5
+    colors:
+      high: "&a"
+      medium: "&e"
+      low: "&c"

@@ -1,0 +1,133 @@
+# 英灵属性配置文件
+# 所有属性均在此配置，不再有硬编码
+
+attributes:
+  # 核心属性
+  health:
+    display_name: "生命值"
+    symbol: "❤"
+    material: "APPLE"
+    min_value: 0.0
+    max_value: 1000000.0
+    format: "§7{display_name}: §a{value} {symbol} ({percent})"
+    mapping:
+      AttributePlus: "health"
+      
+  mana:
+    display_name: "魔力值"
+    symbol: "✦"
+    material: "POTION"
+    min_value: 0.0
+    max_value: 1000000.0
+    format: "§7{display_name}: §b{value} {symbol} ({percent})"
+    mapping:
+      AttributePlus: "mana"
+      
+  exp:
+    display_name: "经验值"
+    symbol: "✪"
+    material: "EXPERIENCE_BOTTLE"
+    min_value: 0.0
+    max_value: 1000000.0
+    format: "§7{display_name}: §e{value} {symbol} ({percent})"
+    
+  speed:
+    display_name: "移动速度"
+    symbol: "⚡"
+    material: "FEATHER"
+    min_value: 0.0
+    max_value: 1.0
+    format: "§7{display_name}: §f{value}{symbol}"
+    mapping:
+      AttributePlus: "speed"
+  
+  attack_speed:
+    display_name: "攻击速度"
+    symbol: "⚔"
+    material: "SUGAR"
+    min_value: 0.0
+    max_value: 20.0
+    format: "§7{display_name}: §f{value}{symbol}"
+    mapping:
+      AttributePlus: "attack_speed"
+  
+  # 战斗属性
+  attack:
+    display_name: "攻击力"
+    symbol: "⚔"
+    material: "DIAMOND_SWORD"
+    min_value: 0.0
+    max_value: 1000000.0
+    format: "§7{display_name}: §f{value}{symbol}"
+    mapping:
+      AttributePlus: "damage"
+  
+  defense:
+    display_name: "防御力"
+    symbol: "🛡"
+    material: "IRON_CHESTPLATE"
+    min_value: 0.0
+    max_value: 1000000.0
+    format: "§7{display_name}: §f{value}{symbol}"
+    mapping:
+      AttributePlus: "defense"
+  
+  magic_resistance:
+    display_name: "魔法抗性"
+    symbol: "✙"
+    material: "BOOK"
+    min_value: 0.0
+    max_value: 100.0
+    format: "§7{display_name}: §f{value}%{symbol}"
+    mapping:
+      AttributePlus: "magic_resistance"
+  
+  crit_chance:
+    display_name: "暴击几率"
+    symbol: "✧"
+    material: "BLAZE_POWDER"
+    min_value: 0.0
+    max_value: 100.0
+    format: "§7{display_name}: §f{value}%{symbol}"
+    mapping:
+      AttributePlus: "crit_chance"
+  
+  crit_damage:
+    display_name: "暴击伤害"
+    symbol: "✯"
+    material: "GOLD_SWORD"
+    min_value: 0.0
+    max_value: 1000.0
+    format: "§7{display_name}: §f{value}%{symbol}"
+    mapping:
+      AttributePlus: "crit_damage"
+  
+  dodge_chance:
+    display_name: "闪避几率"
+    symbol: "☁"
+    material: "LEATHER_BOOTS"
+    min_value: 0.0
+    max_value: 100.0
+    format: "§7{display_name}: §f{value}%{symbol}"
+    mapping:
+      AttributePlus: "dodge_chance"
+  
+  mana_regen:
+    display_name: "魔力恢复"
+    symbol: "♨"
+    material: "GLOWSTONE_DUST"
+    min_value: 0.0
+    max_value: 1000.0
+    format: "§7{display_name}: §f{value}/s{symbol}"
+    mapping:
+      AttributePlus: "mana_regen"
+  
+  noble_phantasm_damage:
+    display_name: "宝具伤害"
+    symbol: "⚜"
+    material: "NETHER_STAR"
+    min_value: 0.0
+    max_value: 1000000.0
+    format: "§7{display_name}: §f{value}{symbol}"
+    mapping:
+      AttributePlus: "np_damage" 

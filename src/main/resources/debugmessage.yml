@@ -1,0 +1,117 @@
+# 调试消息配置
+plugin:
+  init: "插件初始化..."
+  reload: "插件重新加载..."
+  load_config: "加载配置文件: %s"
+
+attribute:
+  load_start: "开始加载属性配置..."
+  load_finish: "属性配置加载完成，共加载 %d 个属性"
+  load_mapping: "加载属性映射: %s -> %s (%s)"
+  not_found: "找不到属性: %s"
+  invalid_material: "无效的材质: %s，使用默认材质"
+  attribute_value: "属性 %s 的值: %.2f (基础值: %.2f, 修饰符数量: %d)"
+  modifier_add: "添加属性修饰符: %s = %.2f (%s)"
+  modifier_remove: "移除属性修饰符: %s"
+
+gui:
+  open_menu: "打开英灵管理界面: %s"
+  generate_window_id: "生成窗口ID: %s"
+  create_packet: "创建数据包: %s"
+  prepare_items: "准备物品: %s"
+  open_inventory: "打开物品栏: %s"
+  click: "点击物品: %s, 槽位: %d"
+  close: "关闭物品栏: %s"
+
+ai:
+  update: "更新英灵AI: %s"
+  target_select: "选择目标: %s -> %s"
+  behavior_change: "行为变更: %s -> %s"
+  follow: "跟随主人: %s, 距离: %.2f"
+  attack: "攻击目标: %s, 距离: %.2f"
+  defend: "防御目标: %s, 距离: %.2f"
+  patrol: "巡逻点: %.2f, %.2f, %.2f"
+
+skills:
+  register: "注册技能: %s (%s)"
+  cast_check: "检查技能释放条件: %s, 结果: %s"
+  cast: "释放技能: %s, 目标: %s"
+  trigger: "触发被动技能: %s, 事件: %s"
+  cooldown: "技能冷却: %s, 剩余: %.2f秒"
+  mana_check: "检查魔法值: %.2f/%.2f"
+
+# 数据库相关调试信息
+database:
+  connect_sqlite: "连接SQLite数据库: {0}"
+  connect_mysql: "连接MySQL数据库: 主机={0}, 端口={1}, 数据库={2}"
+  save_success: "保存玩家 {0} 的英灵数据到数据库成功"
+  load_success: "从数据库加载玩家 {0} 的英灵数据成功"
+  remove_success: "从数据库删除玩家 {0} 的英灵数据成功"
+  create_tables: "创建数据库表结构"
+  transaction_start: "开始数据库事务"
+  transaction_commit: "提交数据库事务"
+  transaction_rollback: "回滚数据库事务"
+  save_attribute: "保存属性: {0}, 基础值: {1}, 成长值: {2}"
+  load_movement_speed: "从数据库加载移动速度值: {0}"
+  use_class_movement_speed: "使用职阶配置的移动速度值: {0}"
+  ai_controller_set: "数据库加载后设置玩家 {0} 的英灵AI控制器为跟随模式，职阶={1}"
+  
+# 英灵相关调试信息
+servant:
+  summon: "玩家 {0} 召唤了职阶为 {1} 的英灵"
+  dismiss: "玩家 {0} 解除了英灵"
+  update_attributes: "更新英灵属性: 等级={0}, 品质={1}"
+  teleport: "英灵传送到位置: 世界={0}, x={1}, y={2}, z={3}"
+  attack: "英灵攻击目标: {0}, 伤害={1}"
+  heal: "英灵恢复生命值: {0} -> {1}"
+  level_up: "英灵升级: {0} -> {1}"
+  init: "[Servant Debug] 初始化英灵: 职阶ID: {0}, 职阶名称: {1}, 职阶品质: {2}"
+  init_skills: "[Servant Debug] 初始化技能列表: 职阶ID: {0}, 技能数量: {1}, 技能列表: {2}, 当前已加载的所有职阶: {3}"
+  no_skills: "[Servant Debug] 警告: 职阶 {0} 的技能列表为空!"
+  set_owner:
+    ignored: "忽略设置英灵所有者尝试：尝试设置为{0}，当前所有者为{1}"
+  set_location: "设置英灵位置：世界={0}, X={1}, Y={2}, Z={3}"
+  set_attribute_growth: "设置英灵属性成长：{0}={1}"
+  spawn_complete: "完成英灵生成：主人={0}, 职阶={1}"
+  follow_task: "执行跟随任务：主人={0}, 职阶={1}"
+  follow_skip: "跳过跟随更新：主人={0}, 位置={1}"
+  follow_update: "更新跟随位置：主人={0}, 位置变化={1}"
+  follow_task_started: "启动跟随任务：主人={0}, 职阶={1}"
+  update_ai: "更新AI：主人={0}, 职阶={1}"
+  attack_cooldown_end: "攻击冷却结束：英灵={0}"
+  ai_controller_null: "AI控制器为空：主人={0}, 职阶={1}"
+  ai_behavior: "当前AI行为：主人={0}, 行为={1}"
+  ai_controller_set: "为玩家 {0} 的英灵设置AI控制器为跟随模式，职阶={1}"
+
+# GUI相关调试信息
+gui:
+  open: "玩家 {0} 打开GUI: {1}"
+  click: "玩家 {0} 点击GUI位置: {1}"
+  close: "玩家 {0} 关闭GUI"
+  
+# 配置相关调试信息
+config:
+  load: "加载配置文件: {0}"
+  save: "保存配置文件: {0}"
+  reload: "重新加载配置文件"
+  
+# 英灵职阶相关调试信息
+servantclass:
+  quality_range: "Loading quality range for {0}, section exists: {1}"
+  quality_range_loaded: "Loaded quality range for {0}: min={1}, max={2}"
+  get_min_quality: "Getting min quality range for {0}: {1}"
+  get_max_quality: "Getting max quality range for {0}: {1}"
+  
+# 系统相关调试信息
+system:
+  startup: "插件启动, 版本: {0}"
+  shutdown: "插件关闭"
+  perform_task: "执行任务: {0}"
+  schedule_task: "计划任务: {0}, 延迟: {1}tick, 周期: {2}tick"
+
+movement:
+  invalid_location: "无效位置：英灵={0}, 原因={1}"
+  already_arrived: "已到达目标：英灵={0}, 目标位置={1}, 距离={2}"
+  move_details: "移动详情：英灵={0}, 起始位置={1}, 目标位置={2}, 距离={3}, 向量=({4},{5},{6}), 速度={7}, 结果={8}"
+  teleport: "传送：英灵={0}, 目标位置={1}, 距离={2}"
+  follow_owner: "跟随主人：英灵={0}, 主人位置={1}, 距离={2}" 

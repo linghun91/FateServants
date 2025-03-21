@@ -1,0 +1,325 @@
+# 职阶基础属性配置文件
+# 这里定义了所有职阶的基本信息和属性配置
+
+classes:
+  SABER:
+    display_name: "剑士"
+    skin_name: "MidouSaki" # 皮肤名称
+    quality_range:    # 品质范围
+      min: "SS"       # 最低品质
+      max: "SSR"      # 最高品质
+    base:
+      health: 350000.0      # 最大生命值
+      movement_speed: 0.4 # 移动速度
+      max_level: 100     # 最大等级
+      max_mana: 80.0     # 最大魔法值
+      attack_speed: 5   # 攻击速度(每x游戏刻执行一次攻击)
+    attributes:
+      attack: 50000.0  # 物理伤害
+      attack_growth: 80-100  # 攻击力成长资质范围
+      defense: 15.0  # 物理防御
+      defense_growth: 70-90  # 防御力成长资质范围
+      crit_rate: 100.0  # 暴击几率
+      crit_rate_growth: 50-70  # 暴击率成长资质范围
+      crit_damage: 100.0  # 暴击倍率
+      crit_damage_growth: 70-90  # 暴击伤害成长资质范围
+    skills:
+      excalibur:
+        name: "Excalibur"
+        cast_type: "active"  # 施法类型: active(主动) / passive(被动)
+        mana_cost: 6.0     # 魔法值消耗
+        cooldown: 100       # 冷却时间(tick)
+        chance: 100.0       # 触发概率(被动技能时生效)
+        description: "誓约胜利之剑"
+      
+  ARCHER:
+    display_name: "弓兵"
+    skin_name: "Emiya"
+    quality_range:
+      min: "C"
+      max: "SSR"
+    base:
+      health: 80.0
+      movement_speed: 0.25
+      max_level: 100     # 最大等级
+      max_mana: 100.0    # 最大魔法值
+      attack_speed: 25   # 攻击速度(每x游戏刻执行一次攻击)
+    attributes:
+      attack: 18.0  # 物理伤害
+      attack_growth: 70-90  # 攻击力成长资质范围
+      defense: 10.0  # 物理防御
+      defense_growth: 50-70  # 防御力成长资质范围
+      crit_rate: 25.0  # 暴击几率
+      crit_rate_growth: 80-100  # 暴击率成长资质范围
+      crit_damage: 175.0  # 暴击倍率
+      crit_damage_growth: 80-100  # 暴击伤害成长资质范围
+    skills:
+      ubw:
+        name: "UBW"
+        cast_type: "active"
+        mana_cost: 50.0
+        cooldown: 600
+        chance: 100.0
+        description: "无限剑制"
+      hawkeye:
+        name: "HawkEye"
+        cast_type: "passive"
+        mana_cost: 10.0
+        cooldown: 200
+        chance: 30.0
+        description: "千里眼"
+      barrage:
+        name: "ProjectileBarrage"
+        cast_type: "active"
+        mana_cost: 30.0
+        cooldown: 300
+        chance: 100.0
+        description: "箭雨"
+      
+  LANCER:
+    display_name: "枪兵"
+    skin_name: "CuChulainn"
+    quality_range:
+      min: "B"
+      max: "SS"
+    base:
+      health: 90.0
+      movement_speed: 0.3
+      max_level: 100     # 最大等级
+      max_mana: 70.0     # 最大魔法值
+    attributes:
+      attack: 15.0  # 物理伤害
+      attack_growth: 75-95  # 攻击力成长资质范围
+      defense: 12.0  # 物理防御
+      defense_growth: 60-80  # 防御力成长资质范围
+      crit_rate: 20.0  # 暴击几率
+      crit_rate_growth: 60-80  # 暴击率成长资质范围
+      crit_damage: 160.0  # 暴击倍率
+      crit_damage_growth: 75-95  # 暴击伤害成长资质范围
+    skills:
+      gaebolg:
+        name: "GaeBolg"
+        cast_type: "active"
+        mana_cost: 40.0
+        cooldown: 400
+        chance: 70.0
+        description: "刺穿死棘之枪"
+      spearmastery:
+        name: "SpearMastery"
+        cast_type: "passive"
+        mana_cost: 0.0
+        cooldown: 0
+        chance: 100.0
+        description: "枪术精通"
+      battlecontinuation:
+        name: "BattleContinuation"
+        cast_type: "passive"
+        mana_cost: 20.0
+        cooldown: 600
+        chance: 60.0
+        description: "战斗续行"
+      
+  RIDER:
+    display_name: "骑兵"
+    skin_name: "Medusa"
+    quality_range:
+      min: "C"
+      max: "SS"
+    description: "机动性最强的职阶，拥有最高的速度和较高的闪避"
+    base:
+      health: 170.0
+      movement_speed: 0.35
+      max_level: 100     # 最大等级
+      max_mana: 60.0     # 最大魔法值
+    attributes:
+      attack: 18.0  # 物理伤害
+      attack_growth: 65-85  # 攻击力成长资质范围
+      defense: 13.0  # 物理防御
+      defense_growth: 55-75  # 防御力成长资质范围
+      crit_rate: 8.0  # 暴击几率
+      crit_rate_growth: 40-60  # 暴击率成长资质范围
+      crit_damage: 160.0  # 暴击倍率
+      crit_damage_growth: 65-85  # 暴击伤害成长资质范围
+      dodge: 12.0  # 闪避几率
+      dodge_growth: 70-90  # 闪避率成长资质范围
+    skills:
+      bellerophon:
+        name: "Bellerophon"
+        cast_type: "active"
+        mana_cost: 45.0
+        cooldown: 500
+        chance: 60.0
+        description: "骑英的缰绳"
+      mountedcombat:
+        name: "MountedCombat"
+        cast_type: "passive"
+        mana_cost: 0.0
+        cooldown: 0
+        chance: 100.0
+        description: "骑乘战斗"
+      chargingstrike:
+        name: "ChargingStrike"
+        cast_type: "active"
+        mana_cost: 25.0
+        cooldown: 200
+        chance: 80.0
+        description: "突击冲锋"
+      
+  CASTER:
+    display_name: "魔术师"
+    skin_name: "Medea"
+    quality_range:
+      min: "C"
+      max: "SSR"
+    description: "魔法职阶，拥有最高的魔法抗性和魔力值"
+    base:
+      health: 130.0
+      movement_speed: 0.18
+      max_level: 100     # 最大等级
+      max_mana: 200.0    # 最大魔法值
+    attributes:
+      attack: 15.0  # 物理伤害
+      attack_growth: 50-70  # 攻击力成长资质范围
+      defense: 8.0  # 物理防御
+      defense_growth: 40-60  # 防御力成长资质范围
+      crit_rate: 5.0  # 暴击几率
+      crit_rate_growth: 30-50  # 暴击率成长资质范围
+      crit_damage: 130.0  # 暴击倍率
+      crit_damage_growth: 50-70  # 暴击伤害成长资质范围
+      dodge: 3.0  # 闪避几率
+      dodge_growth: 30-50  # 闪避率成长资质范围
+    skills:
+      rulebreaker:
+        name: "RuleBreaker"
+        cast_type: "active"
+        mana_cost: 35.0
+        cooldown: 300
+        chance: 70.0
+        description: "万戒必破之符"
+      divinespeed:
+        name: "HighSpeedDivineWords"
+        cast_type: "passive"
+        mana_cost: 15.0
+        cooldown: 100
+        chance: 100.0
+        description: "高速神言"
+      elementalmagic:
+        name: "ElementalMagic"
+        cast_type: "active"
+        mana_cost: 30.0
+        cooldown: 200
+        chance: 90.0
+        description: "元素魔法"
+      
+  ASSASSIN:
+    display_name: "刺客"
+    skin_name: "Sasaki"
+    quality_range:
+      min: "D"
+      max: "SS"
+    description: "暗杀职阶，拥有最高的暴击和闪避能力"
+    base:
+      health: 140.0
+      movement_speed: 0.3
+      max_level: 100     # 最大等级
+      max_mana: 50.0     # 最大魔法值
+    attributes:
+      attack: 28.0  # 物理伤害
+      attack_growth: 75-95  # 攻击力成长资质范围
+      defense: 7.0  # 物理防御
+      defense_growth: 35-55  # 防御力成长资质范围
+      crit_rate: 20.0  # 暴击几率
+      crit_rate_growth: 85-100  # 暴击率成长资质范围
+      crit_damage: 250.0  # 暴击倍率
+      crit_damage_growth: 85-100  # 暴击伤害成长资质范围
+      dodge: 15.0  # 闪避几率
+      dodge_growth: 80-100  # 闪避率成长资质范围
+    skills:
+      zabaniya:
+        name: "Zabaniya"
+        cast_type: "active"
+        mana_cost: 40.0
+        cooldown: 400
+        chance: 60.0
+        description: "妄想心音"
+      concealment:
+        name: "PresenceConcealment"
+        cast_type: "passive"
+        mana_cost: 10.0
+        cooldown: 150
+        chance: 100.0
+        description: "气息遮断"
+      shadowstep:
+        name: "ShadowStep"
+        cast_type: "active"
+        mana_cost: 20.0
+        cooldown: 180
+        chance: 80.0
+        description: "影步"
+      
+  BERSERKER:
+    display_name: "狂战士"
+    skin_name: "Heracles"
+    quality_range:
+      min: "B"
+      max: "SSR"
+    description: "狂暴职阶，拥有最高的生命值和攻击力，但防御较低"
+    base:
+      health: 250.0
+      movement_speed: 0.22
+      max_level: 100     # 最大等级
+      max_mana: 40.0     # 最大魔法值
+    attributes:
+      attack: 30.0  # 物理伤害
+      attack_growth: 90-100  # 攻击力成长资质范围
+      defense: 5.0  # 物理防御
+      defense_growth: 30-50  # 防御力成长资质范围
+      crit_rate: 8.0  # 暴击几率
+      crit_rate_growth: 40-60  # 暴击率成长资质范围
+      crit_damage: 200.0  # 暴击倍率
+      crit_damage_growth: 80-100  # 暴击伤害成长资质范围
+      dodge: 2.0  # 闪避几率
+      dodge_growth: 20-40  # 闪避率成长资质范围
+    skills:
+      godhand:
+        name: "GodHand"
+        cast_type: "active"
+        mana_cost: 50.0
+        cooldown: 600
+        chance: 50.0
+        description: "十二试炼"
+      madenhancement:
+        name: "MadEnhancement"
+        cast_type: "passive"
+        mana_cost: 0.0
+        cooldown: 0
+        chance: 100.0
+        description: "狂化"
+      battlefrenzy:
+        name: "BattleFrenzy"
+        cast_type: "active"
+        mana_cost: 30.0
+        cooldown: 300
+        chance: 80.0
+        description: "战斗狂热"
+
+  PALADIN:
+    display_name: "圣骑士"
+    skin_name: "Galahad"
+    quality_range:
+      min: "A"
+      max: "SSR"
+    base:
+      health: 120.0
+      movement_speed: 0.2
+      max_level: 100     # 最大等级
+      max_mana: 150.0    # 最大魔法值
+    attributes:
+      attack: 15.0  # 物理伤害
+      attack_growth: 60-80  # 攻击力成长资质范围
+      defense: 20.0  # 物理防御
+      defense_growth: 80-100  # 防御力成长资质范围
+      holy_damage: 30.0
+      holy_damage_growth: 80-100  # 神圣伤害成长资质范围
+      healing_power: 15.0
+      healing_power_growth: 70-90  # 治疗能力成长资质范围 

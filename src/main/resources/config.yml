@@ -1,0 +1,145 @@
+# 数据库配置
+database:
+  # 数据库类型: sqlite 或 mysql
+  type: sqlite
+  # MySQL设置 (仅在type为mysql时使用)
+  host: localhost
+  port: 3306
+  database: fateservants
+  username: root
+  password: password
+
+# 英灵基础设置
+servants:
+  # 最大召唤距离
+  max_summon_distance: 32
+  # 最大跟随距离
+  max_follow_distance: 16
+  # 理想跟随距离
+  follow_distance: 2.0
+  # 战斗搜索范围
+  combat_search_range: 10.0
+  # 防御搜索范围
+  defend_search_range: 5.0
+  # 攻击距离
+  attack_range: 2.0
+  # 是否禁止英灵属性与主人属性叠加
+  disable_attribute_stacking: true
+
+# 性能设置
+performance:
+  # 战斗线程池大小
+  battle_thread_pool_size: 4
+  # 位置更新间隔（tick）
+  location_update_interval: 2
+  # 属性更新间隔（tick）
+  attribute_update_interval: 20
+  # 最大同屏英灵数量
+  max_visible_servants: 16
+  # 英灵可见范围（格）
+  servant_visibility_range: 32
+
+# 粒子特效设置
+particles:
+  # 是否启用粒子特效
+  enabled: true
+  # 粒子密度（1-10）
+  density: 5
+  # 粒子可见距离
+  view_distance: 32
+  # 粒子更新间隔（tick）
+  update_interval: 5
+
+# 材质兼容性配置
+materials:
+  compatibility:
+    # 1.13+版本材质的向下兼容映射
+    NETHERITE_SWORD: DIAMOND_SWORD
+    NETHERITE_AXE: DIAMOND_AXE
+    NETHERITE_HELMET: DIAMOND_HELMET
+    NETHERITE_CHESTPLATE: DIAMOND_CHESTPLATE
+    NETHERITE_LEGGINGS: DIAMOND_LEGGINGS
+    NETHERITE_BOOTS: DIAMOND_BOOTS
+    TRIDENT: DIAMOND_SWORD
+    CROSSBOW: BOW
+    SHIELD: IRON_CHESTPLATE
+    ENCHANTED_GOLDEN_APPLE: GOLDEN_APPLE
+    KNOWLEDGE_BOOK: BOOK
+    
+    # 1.8+版本材质的向下兼容映射
+    GOLDEN_SWORD: GOLD_SWORD
+    GOLDEN_AXE: GOLD_AXE
+    GOLDEN_HELMET: GOLD_HELMET
+    GOLDEN_CHESTPLATE: GOLD_CHESTPLATE
+    GOLDEN_LEGGINGS: GOLD_LEGGINGS
+    GOLDEN_BOOTS: GOLD_BOOTS
+
+# 品质配置
+qualities:
+  SSR:
+    multiplier: 10.0  # 品质基数
+    display_name: "§1SSR"  # 品质显示名称(金色)
+  SS:
+    multiplier: 7.0
+    display_name: "§dSS"   # 品质显示名称(粉色)
+  S:
+    multiplier: 6.0
+    display_name: "§9S"    # 品质显示名称(蓝色)
+  A:
+    multiplier: 5.0
+    display_name: "§7A"    # 品质显示名称(灰色)
+  B:
+    multiplier: 4.0
+    display_name: "§8B"    # 品质显示名称(深灰色) 
+  C:
+    multiplier: 3.0
+    display_name: "§8C"    # 品质显示名称(深灰色) 
+  D:
+    multiplier: 2.0
+    display_name: "§8D"    # 品质显示名称(深灰色) 
+  E:
+    multiplier: 1.0
+    display_name: "§8E"    # 品质显示名称(深灰色) 
+
+level_system:
+  # 经验获取公式配置
+  # 可用变量: {damage} - 造成的实际伤害
+  exp_gain_formula: "{damage}/10"
+  
+  # 1级英灵升级所需经验
+  default_required_exp: 100
+  
+  # 升级经验公式配置 (2级及以上使用)
+  # 可用变量: {level} - 当前等级
+  # 示例公式解释:
+  # 2级: 100 + (2 * 240) = 580
+  # 5级: 100 + (5 * 240) = 1300
+  # 10级: 100 + (10 * 240) = 2500
+  level_up_formula: "100+({level}*240)"
+  
+  # 最大等级限制 (-1 表示无限制)
+  max_level: -1
+  
+  # 等级提升时是否发送消息
+  level_up_message: true
+  
+  # 等级提升时是否播放音效
+  level_up_sound: true
+  
+  # 属性计算公式
+  # 可用变量: 
+  # {base} - 初始值
+  # {level} - 当前等级
+  # {quality} - 品质倍率
+  # {growth} - 属性成长资质 (0.0-1.0)
+  attribute_formulas:
+    # 核心属性计算公式
+    max_health: "{base}*({level}*0.1+1)*{quality}"
+    max_mana: "{base}*({level}*0.1+1)*{quality}"
+    
+    # 默认属性计算公式 (用于所有其他AttributePlus属性)
+    # 基础值 * (1 + 等级*成长资质*0.1) * 品质倍率
+    default: "{base}*(1+{level}*{growth}*0.1)*{quality}"
+
+# 调试模式
+debug: false 
